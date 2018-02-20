@@ -45,5 +45,3 @@ const styles = StyleSheet.create({
 });
 
 export default SingleDeckView;
-
-// <Button title="Start Quiz" onPress={() => navigate('QuizView')} />

@@ -6,51 +6,6 @@ import SingleDeckView from './SingleDeckView';
 import { getDecks } from '../utils/api';
 import { receiveDecks } from '../actions';
 
-// class DeckListView extends Component {
-//   componentDidMount() {
-//     const { dispatch } = this.props;
-//     getDecks().then(decks => dispatch(receiveDecks(decks)));
-//   }
-
-//   render() {
-//     const { decks } = this.props;
-//     const { navigate } = this.props.navigation;
-//     // console.log(this.props);
-
-//     return (
-//       <ScrollView contentContainerStyle={styles.container}>
-//         <View style={styles.deck}>
-//           <Text style={styles.deckText}>React Redux</Text>
-//           <Text style={styles.deckText}>2 cards</Text>
-//         </View>
-      
-
-//       </ScrollView>
-//     );
-//   }
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flexGrow: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center'
-//   },
-//   deck: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     backgroundColor: '#F38181',
-//     margin: 10,
-//     width: 220,
-//     height: 220
-//   },
-//   deckText: {
-//     fontSize: 20,
-//     color: '#FBFBFB'
-//   }
-// });
-
 // #756C83#F38181#B9E1DC#FBFBFB
 
 class DeckListView extends Component {
