@@ -5,7 +5,7 @@ import QuizView from './QuizView';
 
 class SingleDeckView extends Component {
   render() {
-    console.log(this.props);
+  
     const { title, cards } = this.props.navigation.state.params;
     const { navigate } = this.props.navigation;
 
@@ -17,8 +17,8 @@ class SingleDeckView extends Component {
             {cards.length > 1 ? `${cards.length} cards` : `${cards.length} card`}
           </Text>
         </View>
-        <Button title="Add Card" onPress={() => navigate('NewCardView')} />
-        <Button title="Start Quiz" onPress={() => navigate('QuizView')} />
+        <Button title="Add Card" onPress={() => navigate('NewCardView', )} />
+        <Button title="Start Quiz" onPress={() => navigate('QuizView', { cards })} />
       </View>
     );
   }
