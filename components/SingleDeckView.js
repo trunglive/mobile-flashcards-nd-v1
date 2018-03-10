@@ -5,7 +5,6 @@ import QuizView from './QuizView';
 
 class SingleDeckView extends Component {
   render() {
-  
     const { title, cards } = this.props.navigation.state.params;
     const { navigate } = this.props.navigation;
 
