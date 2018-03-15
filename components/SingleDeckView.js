@@ -17,7 +17,7 @@ class SingleDeckView extends Component {
           </Text>
         </View>
         <Button title="Add Card" onPress={() => navigate('NewCardView', )} />
-        <Button title="Start Quiz" onPress={() => navigate('QuizView', { cards })} />
+        <Button title="Start Quiz" onPress={() => navigate('QuizView', { title, cards })} />
       </View>
     );
   }

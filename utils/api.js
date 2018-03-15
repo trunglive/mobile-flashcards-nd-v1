@@ -29,6 +29,11 @@ const data = {
     title: 'CSS',
     cards: [
       {
+        question: 'What does CSS stand for',
+        answer:
+          'Cascading Stylesheet'
+      },
+      {
         question: 'What is a CSS preprocessor?',
         answer:
           'A preprocessor is an abstraction layer built on top of CSS. Sass, LESS are common preprocessors'
@@ -59,7 +64,7 @@ export const saveDeckTitle = title => {
     DECK_STORAGE_KEY,
     JSON.stringify({
       [title]: {
-        title: title,
+        title,
         cards: []
       }
     })
