@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
-import NewCardView from './NewCardView';
+import NewQuestionView from './NewQuestionView';
 import QuizView from './QuizView';
 
 class SingleDeckView extends Component {
   render() {
-    const { title, cards } = this.props.navigation.state.params;
+    const { title, questions } = this.props.navigation.state.params;
     const { navigate } = this.props.navigation;
 
     return (
@@ -13,11 +13,11 @@ class SingleDeckView extends Component {
         <View style={styles.singleDeckInfo}>
           <Text style={styles.singleDeckTitle}>{title}</Text>
           <Text style={styles.singleDeckCardNumber}>
-            {cards.length > 1 ? `${cards.length} cards` : `${cards.length} card`}
+            {questions.length > 1 ? `${questions.length} questions` : `${questions.length} question`}
           </Text>
         </View>
-        <Button title="Add Card" onPress={() => navigate('NewCardView', )} />
-        <Button title="Start Quiz" onPress={() => navigate('QuizView', { title, cards })} />
+        <Button title="Add Question" onPress={() => navigate('NewQuestionView', { title, questions })} />
+        <Button title="Start Quiz" onPress={() => navigate('QuizView', { title, questions })} />
       </View>
     );
   }

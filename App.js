@@ -6,14 +6,14 @@ import { Constants } from "expo";
 import { StackNavigator } from "react-navigation";
 import DeckListView from "./components/DeckListView";
 import SingleDeckView from "./components/SingleDeckView";
-import NewCardView from "./components/NewCardView";
+import NewQuestionView from "./components/NewQuestionView";
 import QuizView from "./components/QuizView";
 import reducer from "./reducers";
 
 const Home = StackNavigator({
   DeckListView: { screen: DeckListView },
   SingleDeckView: { screen: SingleDeckView },
-  NewCardView: { screen: NewCardView },
+  NewQuestionView: { screen: NewQuestionView },
   QuizView: { screen: QuizView }
 });
 

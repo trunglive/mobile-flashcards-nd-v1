@@ -5,7 +5,7 @@ export const DECK_STORAGE_KEY = 'Flashcards:deck';
 const data = {
   React: {
     title: 'React',
-    cards: [
+    questions: [
       {
         question: 'What is React?',
         answer: 'A JavaScript library for building user interfaces'
@@ -18,7 +18,7 @@ const data = {
   },
   Redux: {
     title: 'Redux',
-    cards: [
+    questions: [
       {
         question: 'What is Redux?',
         answer: 'Redux is a predictable state container for JavaScript apps'
@@ -27,7 +27,7 @@ const data = {
   },
   CSS: {
     title: 'CSS',
-    cards: [
+    questions: [
       {
         question: 'What does CSS stand for',
         answer:
@@ -65,17 +65,17 @@ export const saveDeckTitle = title => {
     JSON.stringify({
       [title]: {
         title,
-        cards: []
+        questions: []
       }
     })
   );
 };
 
-export const addCardToDeck = (title, card) => {
+export const addQuestionToDeck = (title, question) => {
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
     .then(results => JSON.parse(results))
     .then(results => {
-      results.title.cards.push(card);
+      results.title.questions.push(question);
       AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(results));
       return results;
     });

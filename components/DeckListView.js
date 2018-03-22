@@ -21,19 +21,19 @@ class DeckListView extends Component {
     return (
       <ScrollView contentContainerStyle={styles.container}>
         {Object.keys(decks).map(deck => {
-          const { title, cards } = decks[deck];
+          const { title, questions } = decks[deck];
           return (
             <View key={title} style={styles.deck}>
               <Text
                 style={styles.deckText}
-                onPress={() => navigate('SingleDeckView', { title, cards })}
+                onPress={() => navigate('SingleDeckView', { title, questions })}
               >
                 {title}
               </Text>
               <Text style={styles.deckText}>
-                {cards.length > 1
-                  ? `${cards.length} cards`
-                  : `${cards.length} card`}
+                {questions.length > 1
+                  ? `${questions.length} questions`
+                  : `${questions.length} question`}
               </Text>
             </View>
           );

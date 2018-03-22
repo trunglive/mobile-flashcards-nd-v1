@@ -1,7 +1,7 @@
 
 export const RECEIVE_DECKS = 'RECEIVE_DECKS';
 export const ADD_DECK = 'ADD_DECK';
-export const ADD_CARD = 'ADD_CARD';
+export const ADD_QUESTION = 'ADD_QUESTION';
 
 export const receiveDecks = decks => ({
   type: RECEIVE_DECKS,
@@ -13,7 +13,7 @@ export const addDeck = deck => ({
   deck
 });
 
-export const addCard = card => ({
-  type: ADD_CARD,
-  card
+export const addCard = question => ({
+  type: ADD_QUESTION,
+  question
 });
