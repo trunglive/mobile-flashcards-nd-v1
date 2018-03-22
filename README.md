@@ -25,7 +25,7 @@ $ npm install
 $ npm start
 ```
 
-**Expo app**
+**Expo app**  
 Please install [Expo app](https://itunes.apple.com/us/app/expo-client/id982107779?mt=8), then scan the barcode from step **Run the App** to view the app on iPhone.
 
 ## Contributors
