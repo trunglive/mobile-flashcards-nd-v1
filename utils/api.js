@@ -75,7 +75,7 @@ export const addQuestionToDeck = (title, question) => {
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
     .then(results => JSON.parse(results))
     .then(results => {
-      results.title.questions.push(question);
+      results[title].questions.push(question);
       AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(results));
       return results;
     });
