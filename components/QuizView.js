@@ -3,14 +3,14 @@ import { View, Text, StyleSheet } from "react-native";
 
 class QuizView extends Component {
   render() {
-    const { title, questions } = this.props.navigation.state.params;
+    const { title, cards } = this.props.navigation.state.params;
     
     return (
       <View style={styles.container}>
-        {questions.map(question => (
-          <View key={question.question}>
-            <Text>{question.question}</Text>
-            <Text>{question.answer}</Text>
+        {cards.map(card => (
+          <View key={card.question}>
+            <Text>{card.question}</Text>
+            <Text>{card.answer}</Text>
           </View>
         ))}
       </View>

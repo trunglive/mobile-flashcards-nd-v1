@@ -7,10 +7,10 @@ import {
   FormLabel,
   FormInput,
 } from "react-native-elements";
-import { addQuestionToDeck } from '../utils/api';
+import { addCardToDeck } from '../utils/api';
 import { addCard } from '../actions';
 
-class NewQuestionView extends Component {
+class NewCardView extends Component {
   state = {
     question: "",
     answer: ""
@@ -19,20 +19,18 @@ class NewQuestionView extends Component {
   handleEnter = () => {
     const card = {...this.state};
     const { title } = this.props.navigation.state.params;
+    console.log(title);
 
-    addQuestionToDeck(title, card).then(results => {
-      // const storedResults = JSON.parse(results);
-      console.log(results);
-      this.props.addCard(results);
-    })
+    this.props.addCard(title, card);
+    addCardToDeck(title, card);
+    
   }
 
   render() {
     // const { title } = this.props.navigation.state.params;
     // console.log(title);
 
-    const card = {...this.state};
-    console.log(card);
+    const { question, answer } = this.state;
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
@@ -40,16 +38,16 @@ class NewQuestionView extends Component {
         <FormInput containerStyle={styles.input}
           placeholder="Enter your question"
           onChangeText={question => this.setState({ question })}
-          value={this.state.question}
+          value={question}
         />
         <FormLabel>Answer</FormLabel>
         <FormInput containerStyle={styles.input}
           placeholder="Enter your answer"
           onChangeText={answer => this.setState({ answer })}
-          value={this.state.answer}
+          value={answer}
         />
         <Button
-          title="Enter" 
+          title="Submit" 
           onPress={this.handleEnter}
         />
       </ScrollView>
@@ -71,4 +69,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(null, { addCard })(NewQuestionView);
+export default connect(null, { addCard })(NewCardView);

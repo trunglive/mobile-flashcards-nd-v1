@@ -1,42 +1,41 @@
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage } from "react-native";
 
-export const DECK_STORAGE_KEY = 'Flashcards:deck';
+export const DECK_STORAGE_KEY = "Flashcards:deck";
 
 const data = {
   React: {
-    title: 'React',
-    questions: [
+    title: "React",
+    cards: [
       {
-        question: 'What is React?',
-        answer: 'A JavaScript library for building user interfaces'
+        question: "What is React?",
+        answer: "A JavaScript library for building user interfaces"
       },
       {
-        question: 'What is stateless functional component?',
-        answer: 'It is a component without states and lifecycle methods'
+        question: "What is stateless functional component?",
+        answer: "It is a component without states and lifecycle methods"
       }
     ]
   },
   Redux: {
-    title: 'Redux',
-    questions: [
+    title: "Redux",
+    cards: [
       {
-        question: 'What is Redux?',
-        answer: 'Redux is a predictable state container for JavaScript apps'
+        question: "What is Redux?",
+        answer: "Redux is a predictable state container for JavaScript apps"
       }
     ]
   },
   CSS: {
-    title: 'CSS',
-    questions: [
+    title: "CSS",
+    cards: [
       {
-        question: 'What does CSS stand for',
-        answer:
-          'Cascading Stylesheet'
+        question: "What does CSS stand for",
+        answer: "Cascading Stylesheet"
       },
       {
-        question: 'What is a CSS preprocessor?',
+        question: "What is a CSS preprocessor?",
         answer:
-          'A preprocessor is an abstraction layer built on top of CSS. Sass, LESS are common preprocessors'
+          "A preprocessor is an abstraction layer built on top of CSS. Sass, LESS are common preprocessors"
       }
     ]
   }
@@ -59,6 +58,16 @@ export const getDeck = id => {
     .then(results => results.id);
 };
 
+export const addCardToDeck = (title, card) => {
+  return AsyncStorage.getItem(DECK_STORAGE_KEY)
+    .then(allDecks => JSON.parse(allDecks))
+    .then(allDecks => {
+      allDecks[title].cards.push(card);
+      AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(allDecks));
+      return allDecks;
+    });
+};
+
 export const saveDeckTitle = title => {
   return AsyncStorage.mergeItem(
     DECK_STORAGE_KEY,
@@ -69,14 +78,4 @@ export const saveDeckTitle = title => {
       }
     })
   );
-};
-
-export const addQuestionToDeck = (title, question) => {
-  return AsyncStorage.getItem(DECK_STORAGE_KEY)
-    .then(results => JSON.parse(results))
-    .then(results => {
-      results[title].questions.push(question);
-      AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(results));
-      return results;
-    });
 };
