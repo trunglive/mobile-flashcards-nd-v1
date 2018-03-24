@@ -19,17 +19,13 @@ class NewCardView extends Component {
   handleEnter = () => {
     const card = {...this.state};
     const { title } = this.props.navigation.state.params;
-    console.log(title);
 
     this.props.addCard(title, card);
     addCardToDeck(title, card);
-    
+    this.props.navigation.goBack();
   }
 
   render() {
-    // const { title } = this.props.navigation.state.params;
-    // console.log(title);
-
     const { question, answer } = this.state;
 
     return (

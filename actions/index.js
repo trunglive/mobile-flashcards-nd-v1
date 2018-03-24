@@ -8,9 +8,9 @@ export const receiveDecks = decks => ({
   decks
 });
 
-export const addDeck = deck => ({
+export const addDeck = title => ({
   type: ADD_DECK,
-  deck
+  title
 });
 
 export const addCard = (title, card) => ({

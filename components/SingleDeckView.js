@@ -16,8 +16,8 @@ class SingleDeckView extends Component {
             {cards.length > 1 ? `${cards.length} questions` : `${cards.length} question`}
           </Text>
         </View>
-        <Button title="Add Card (Question/Answer)" onPress={() => navigate('NewCardView', { title, cards })} />
-        <Button title="Start Quiz" onPress={() => navigate('QuizView', { title, cards })} />
+        <Button title="Add Card (Question/Answer)" onPress={() => navigate('NewCard', { title, cards })} />
+        <Button title="Start Quiz" onPress={() => navigate('Quiz', { title, cards })} />
       </View>
     );
   }

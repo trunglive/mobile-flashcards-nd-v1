@@ -1,20 +1,57 @@
 import React, { Component } from "react";
+
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import { View, StyleSheet, StatusBar } from "react-native";
-import { Constants } from "expo";
-import { StackNavigator } from "react-navigation";
-import DeckListView from "./components/DeckListView";
-import SingleDeckView from "./components/SingleDeckView";
-import NewCardView from "./components/NewCardView";
-import QuizView from "./components/QuizView";
 import reducer from "./reducers";
 
-const Home = StackNavigator({
-  DeckListView: { screen: DeckListView },
-  SingleDeckView: { screen: SingleDeckView },
-  NewCardView: { screen: NewCardView },
-  QuizView: { screen: QuizView }
+import { View, StyleSheet, StatusBar } from "react-native";
+import { Constants } from "expo";
+
+import DeckListView from "./components/DeckListView";
+import SingleDeckView from "./components/SingleDeckView";
+import QuizView from "./components/QuizView";
+import NewCardView from "./components/NewCardView";
+import NewDeckView from './components/NewDeckView';
+
+import { StackNavigator, TabNavigator } from "react-navigation";
+
+const Tabs = TabNavigator({
+  DeckList: {
+    screen: DeckListView,
+    navigationOptions: {
+      tabBarLabel: "Deck List"
+    }
+  },
+  NewDeck: {
+    screen: NewDeckView,
+    navigationOptions: {
+      tabBarLabel: "Add Deck"
+    }
+  }
+})
+
+const Main = StackNavigator({
+  Home: {
+    screen: Tabs,
+  },
+  SingleDeck: {
+    screen: SingleDeckView,
+    navigationOptions: {
+      title: "Deck"
+    }
+  },
+  NewCard: {
+    screen: NewCardView,
+    navigationOptions: {
+      title: "Card"
+    }
+  },
+  Quiz: {
+    screen: QuizView,
+    navigationOptions: {
+      title: "Quiz"
+    }
+  }
 });
 
 function FlashCardStatusBar({ backgroundColor, ...props }) {
@@ -33,7 +70,7 @@ const App = () => {
           backgroundColor="#756C83"
           barStyle="light-content"
         />
-        <Home />
+        <Main />
       </View>
     </Provider>
   );

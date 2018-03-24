@@ -16,8 +16,9 @@ class DeckListView extends Component {
 
   render() {
     const { decks } = this.props;
-    console.log(decks);
     
+    console.log(decks);
+
     const { navigate } = this.props.navigation;
     
     return (
@@ -28,7 +29,7 @@ class DeckListView extends Component {
             <View key={title} style={styles.deck}>
               <Text
                 style={styles.deckText}
-                onPress={() => navigate('SingleDeckView', { title, cards })}
+                onPress={() => navigate('SingleDeck', { title, cards })}
               >
                 {title}
               </Text>

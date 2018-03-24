@@ -74,7 +74,7 @@ export const saveDeckTitle = title => {
     JSON.stringify({
       [title]: {
         title,
-        questions: []
+        cards: []
       }
     })
   );

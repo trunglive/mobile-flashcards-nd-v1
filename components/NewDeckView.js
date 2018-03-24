@@ -1,22 +1,38 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { FormLabel, FormInput } from 'react-native-elements';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { View, StyleSheet, Alert } from "react-native";
+import { FormLabel, FormInput, Button } from "react-native-elements";
+import { saveDeckTitle } from "../utils/api";
+import { addDeck } from "../actions";
+import { getDecks } from "../utils/api";
 
 class NewDeckView extends Component {
+  state = {
+    title: ""
+  };
+
+  handleEnter = () => {
+    const { title } = this.state;
+
+    this.props.addDeck(title);
+    saveDeckTitle(title);
+
+    this.props.navigation.goBack();
+  };
+
   render() {
-    state = {
-      deck: ''
-    }
+    const { title } = this.state;
 
     return (
       <View style={styles.container}>
         <FormLabel>Deck</FormLabel>
-        <FormInput containerStyle={styles.container}
-          placeholder="Enter the name of new deck"
-          onChangeText={deck => this.setState({ deck })}
-          value={this.state.deck}
+        <FormInput
+          containerStyle={styles.container}
+          placeholder="Enter name of a new deck"
+          onChangeText={title => this.setState({ title })}
+          value={title}
         />
-        <Button title="Submit" />
+        <Button title="Submit" onPress={this.handleEnter} />
       </View>
     );
   }
@@ -25,9 +41,9 @@ class NewDeckView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: "center",
+    justifyContent: "center"
   }
 });
 
-export default NewDeckView;
+export default connect(null, { addDeck })(NewDeckView);
