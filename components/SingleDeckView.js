@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import NewCardView from './NewCardView';
-import QuizView from './QuizView';
+import React, { Component } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { Button } from "react-native-elements";
+import NewCardView from "./NewCardView";
+import QuizView from "./QuizView";
 
 class SingleDeckView extends Component {
   render() {
@@ -13,11 +14,21 @@ class SingleDeckView extends Component {
         <View style={styles.singleDeckInfo}>
           <Text style={styles.singleDeckTitle}>{title}</Text>
           <Text style={styles.singleDeckCardNumber}>
-            {cards.length > 1 ? `${cards.length} questions` : `${cards.length} question`}
+            {cards.length > 1
+              ? `${cards.length} questions`
+              : `${cards.length} question`}
           </Text>
         </View>
-        <Button title="Add Card (Question/Answer)" onPress={() => navigate('NewCard', { title, cards })} />
-        <Button title="Start Quiz" onPress={() => navigate('Quiz', { title, cards })} />
+        <Button
+          buttonStyle={{ backgroundColor: "#F38181", marginTop: 20 }}
+          title="Add Card"
+          onPress={() => navigate("NewCard", { title, cards })}
+        />
+        <Button
+          buttonStyle={{ backgroundColor: "#F38181", marginBottom: 20 }}
+          title="Start Quiz"
+          onPress={() => navigate("Quiz", { title, cards })}
+        />
       </View>
     );
   }
@@ -26,20 +37,20 @@ class SingleDeckView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F38181'
+    backgroundColor: "#F38181"
   },
   singleDeckInfo: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: "center",
+    justifyContent: "center"
   },
   singleDeckTitle: {
     fontSize: 50,
-    color: '#FBFBFB'
+    color: "#FBFBFB"
   },
   singleDeckCardNumber: {
     fontSize: 20,
-    color: '#FBFBFB'
+    color: "#FBFBFB"
   }
 });
 

@@ -19,10 +19,11 @@ class NewCardView extends Component {
   handleEnter = () => {
     const card = {...this.state};
     const { title } = this.props.navigation.state.params;
+    const { addCard, navigation } = this.props;
 
-    this.props.addCard(title, card);
+    addCard(title, card);
     addCardToDeck(title, card);
-    this.props.navigation.goBack();
+    navigation.goBack();
   }
 
   render() {
@@ -30,19 +31,21 @@ class NewCardView extends Component {
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <FormLabel>Question</FormLabel>
-        <FormInput containerStyle={styles.input}
+        <FormLabel containerStyle={styles.label}>Question</FormLabel>
+        <FormInput
+          containerStyle={styles.form}
           placeholder="Enter your question"
           onChangeText={question => this.setState({ question })}
           value={question}
         />
-        <FormLabel>Answer</FormLabel>
-        <FormInput containerStyle={styles.input}
+        <FormLabel containerStyle={styles.label}>Answer</FormLabel>
+        <FormInput
+          containerStyle={styles.form}
           placeholder="Enter your answer"
           onChangeText={answer => this.setState({ answer })}
           value={answer}
         />
-        <Button
+        <Button style={styles.submit}
           title="Submit" 
           onPress={this.handleEnter}
         />
@@ -53,15 +56,21 @@ class NewCardView extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+    marginTop: 100
   },
-  input: {
+  form: {
+    marginLeft: 50,
+    marginRight: 50
+  },
+  label: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 20,
+  },
+  submit: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: 100,
   }
 });
 

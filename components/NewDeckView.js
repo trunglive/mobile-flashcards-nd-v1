@@ -16,7 +16,6 @@ class NewDeckView extends Component {
 
     this.props.addDeck(title);
     saveDeckTitle(title);
-
     this.props.navigation.goBack();
   };
 
@@ -25,14 +24,14 @@ class NewDeckView extends Component {
 
     return (
       <View style={styles.container}>
-        <FormLabel>Deck</FormLabel>
+        <FormLabel containerStyle={styles.label}>Deck</FormLabel>
         <FormInput
-          containerStyle={styles.container}
+          containerStyle={styles.form}
           placeholder="Enter name of a new deck"
           onChangeText={title => this.setState({ title })}
           value={title}
         />
-        <Button title="Submit" onPress={this.handleEnter} />
+        <Button style={styles.submit} title="Create Deck" onPress={this.handleEnter} />
       </View>
     );
   }
@@ -40,9 +39,19 @@ class NewDeckView extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 100
+  },
+  label: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  form: {
+    margin: 50
+  },
+  submit: {
+    flex: 1,
+    alignItems: 'center'
   }
 });
 

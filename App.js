@@ -1,17 +1,15 @@
 import React, { Component } from "react";
-
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducers";
-
 import { View, StyleSheet, StatusBar } from "react-native";
 import { Constants } from "expo";
-
 import DeckListView from "./components/DeckListView";
 import SingleDeckView from "./components/SingleDeckView";
 import QuizView from "./components/QuizView";
+import QuizResultView from "./components/QuizResultView";
 import NewCardView from "./components/NewCardView";
-import NewDeckView from './components/NewDeckView';
+import NewDeckView from "./components/NewDeckView";
 
 import { StackNavigator, TabNavigator } from "react-navigation";
 
@@ -28,29 +26,23 @@ const Tabs = TabNavigator({
       tabBarLabel: "Add Deck"
     }
   }
-})
+});
 
 const Main = StackNavigator({
   Home: {
-    screen: Tabs,
+    screen: Tabs
   },
   SingleDeck: {
-    screen: SingleDeckView,
-    navigationOptions: {
-      title: "Deck"
-    }
+    screen: SingleDeckView
   },
   NewCard: {
-    screen: NewCardView,
-    navigationOptions: {
-      title: "Card"
-    }
+    screen: NewCardView
   },
   Quiz: {
-    screen: QuizView,
-    navigationOptions: {
-      title: "Quiz"
-    }
+    screen: QuizView
+  },
+  QuizResult: {
+    screen: QuizResultView
   }
 });
 
