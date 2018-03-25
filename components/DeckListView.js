@@ -16,9 +16,6 @@ class DeckListView extends Component {
 
   render() {
     const { decks } = this.props;
-    
-    console.log(decks);
-
     const { navigate } = this.props.navigation;
     
     return (
