@@ -5,7 +5,7 @@ import { FormLabel, FormInput, Button } from "react-native-elements";
 import { saveDeckTitle } from "../utils/api";
 import { addDeck } from "../actions";
 import { getDecks } from "../utils/api";
-import { orange } from "../utils/colors";
+import { primaryColor } from "../utils/colors";
 
 class NewDeckView extends Component {
   state = {
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   warning: {
     marginTop: 20,
     textAlign: "center",
-    color: orange,
+    color: primaryColor,
     fontSize: 18
   },
   label: {
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   submit: {
     marginTop: 50,
-    backgroundColor: orange
+    backgroundColor: primaryColor
   }
 });
 

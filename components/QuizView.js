@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
-import FlipCard from "react-native-flip-card";
 import QuizResultView from "./QuizResultView";
+import FlipCardContent from './FlipCardContent';
 import { getDecks } from "../utils/api";
 import { receiveDecks } from "../actions";
 import { clearLocalNotification, setLocalNotification } from "../utils/helpers";
-import { orange } from "../utils/colors";
+import { primaryColor } from "../utils/colors";
 
 class QuizView extends Component {
   state = {
@@ -66,19 +66,11 @@ class QuizView extends Component {
       <View>
         {currentCardIndex < cards.length ? (
           <View>
-            <FlipCard style={styles.container} flip={isFlip}>
-              <View style={styles.face}>
-                <Text style={styles.question}>
-                  {cards[currentCardIndex].question}
-                </Text>
-              </View>
-              <View style={styles.back}>
-                <Text style={styles.answer}>
-                  {cards[currentCardIndex].answer}
-                </Text>
-              </View>
-            </FlipCard>
-
+            <FlipCardContent
+              isFlip={isFlip}
+              question={cards[currentCardIndex].question}
+              answer={cards[currentCardIndex].answer}
+            />
             <View style={styles.toggleCard}>
               <Button
                 buttonStyle={styles.button}
@@ -98,7 +90,9 @@ class QuizView extends Component {
                 onPress={this.handleIncorrect}
               />
             </View>
-            <Text style={styles.progress}>{currentCardIndex} / {cards.length}</Text>
+            <Text style={styles.progress}>
+              {currentCardIndex} / {cards.length}
+            </Text>
           </View>
         ) : (
           <QuizResultView
@@ -114,29 +108,6 @@ class QuizView extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  question: {
-    marginTop: 100,
-    marginLeft: 20,
-    marginRight: 20,
-    marginBottom: 30,
-    textAlign: "center",
-    fontSize: 18,
-    color: orange
-  },
-  answer: {
-    marginTop: 100,
-    marginLeft: 20,
-    marginRight: 20,
-    marginBottom: 30,
-    textAlign: "center",
-    fontSize: 18,
-    color: orange
-  },
   toggleCard: {
     flex: 1,
     flexDirection: "row",
@@ -151,13 +122,13 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 50,
-    backgroundColor: orange
+    backgroundColor: primaryColor
   },
   progress: {
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 150,
-    color: orange,
-    fontSize: 18,
+    color: primaryColor,
+    fontSize: 18
   }
 });
 

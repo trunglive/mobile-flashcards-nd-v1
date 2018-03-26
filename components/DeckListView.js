@@ -12,7 +12,7 @@ import { StackNavigator } from "react-navigation";
 import SingleDeckView from "./SingleDeckView";
 import { receiveDecks } from "../actions";
 import { getDecks } from "../utils/api";
-import { orange, lightwhite } from '../utils/colors';
+import { primaryColor, secondaryColor } from '../utils/colors';
 
 class DeckListView extends Component {
   componentDidMount() {
@@ -63,15 +63,15 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     margin: 10,
-    backgroundColor: orange
+    backgroundColor: primaryColor
   },
   deckTitle: {
     fontSize: 30,
-    color: lightwhite
+    color: secondaryColor
   },
   cardNumber: {
     fontSize: 20,
-    color: lightwhite
+    color: secondaryColor
   }
 });
 

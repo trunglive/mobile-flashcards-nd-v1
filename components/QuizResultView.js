@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
-import { orange } from "../utils/colors";
+import { primaryColor } from "../utils/colors";
 
 class QuizResultView extends Component {
   state = {
@@ -71,14 +71,14 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 200,
     textAlign: "center",
-    color: orange,
+    color: primaryColor,
     fontSize: 18
   },
   button: {
     marginTop: 20,
     marginLeft: 50,
     marginRight: 50,
-    backgroundColor: orange
+    backgroundColor: primaryColor
   }
 });
 

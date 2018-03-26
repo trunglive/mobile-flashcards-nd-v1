@@ -1,3 +1,3 @@
-export const orange = '#F38181';
-export const lightwhite = '#FBFBFB';
-export const purple = '#756C83';
+export const primaryColor = '#F38181';
+export const secondaryColor = '#FBFBFB';
+// export const statusBarColor = '#756C83';

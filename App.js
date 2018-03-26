@@ -13,7 +13,7 @@ import QuizView from "./components/QuizView";
 import SingleDeckView from "./components/SingleDeckView";
 import { setLocalNotification } from "./utils/helpers";
 import { StackNavigator, TabNavigator } from "react-navigation";
-import { lightwhite, orange } from './utils/colors';
+import { primaryColor, secondaryColor } from './utils/colors';
 
 const Tabs = TabNavigator({
   DeckList: {
@@ -21,7 +21,7 @@ const Tabs = TabNavigator({
     navigationOptions: {
       tabBarLabel: "Deck List",
       tabBarIcon: () => (
-        <Ionicons name="ios-card-outline" size={30} color={orange} />
+        <Ionicons name="ios-card-outline" size={30} color={primaryColor} />
       )
     }
   },
@@ -30,13 +30,13 @@ const Tabs = TabNavigator({
     navigationOptions: {
       tabBarLabel: "Add Deck",
       tabBarIcon: () => (
-        <Ionicons name="ios-add" size={30} color={orange} />
+        <Ionicons name="ios-add" size={30} color={primaryColor} />
       )
     }
   }
 }, {
   tabBarOptions: {
-    activeTintColor: orange
+    activeTintColor: primaryColor
   }
 });
 
@@ -91,7 +91,7 @@ class App extends Component {
       <Provider store={createStore(reducer)}>
         <View style={styles.container}>
           <FlashCardStatusBar
-            backgroundColor={orange}
+            backgroundColor={primaryColor}
             barStyle="light-content"
           />
           <Main />
@@ -104,7 +104,7 @@ class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: lightwhite
+    backgroundColor: secondaryColor
   }
 });
 

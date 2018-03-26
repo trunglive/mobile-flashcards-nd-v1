@@ -4,7 +4,7 @@ import { KeyboardAvoidingView, Text, StyleSheet } from "react-native";
 import { Card, Button, FormLabel, FormInput } from "react-native-elements";
 import { addCardToDeck } from "../utils/api";
 import { addCard } from "../actions";
-import { orange } from "../utils/colors";
+import { primaryColor } from "../utils/colors";
 
 class NewCardView extends Component {
   state = {
@@ -63,17 +63,17 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   label: {
-    color: orange
+    color: primaryColor
   },
   warning: {
     marginTop: 20,
     textAlign: "center",
-    color: orange,
+    color: primaryColor,
     fontSize: 18
   },
   submit: {
     marginTop: 50,
-    backgroundColor: orange
+    backgroundColor: primaryColor
   }
 });
 

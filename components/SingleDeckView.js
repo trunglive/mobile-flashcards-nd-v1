@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import NewCardView from "./NewCardView";
 import QuizView from "./QuizView";
-import { orange } from "../utils/colors";
+import { primaryColor } from "../utils/colors";
 
 class SingleDeckView extends Component {
   state = {
@@ -39,22 +39,17 @@ class SingleDeckView extends Component {
         </View>
         <View style={styles.groupButton}>
           <Button
-            buttonStyle={{ backgroundColor: orange, width: 150 }}
+            buttonStyle={styles.button}
             title="Add Card"
             onPress={() => navigate("NewCard", { title, cards })}
           />
           <Button
-            buttonStyle={{
-              backgroundColor: orange,
-              marginTop: 20,
-              marginBottom: 60,
-              width: 150
-            }}
+            buttonStyle={styles.button}
             title="Start Quiz"
             onPress={() => navigate("Quiz", { title, cards })}
           />
           <Button
-            buttonStyle={{ backgroundColor: orange, width: 150 }}
+            buttonStyle={styles.button}
             title="Deck List"
             onPress={() => navigate("DeckList", { title, cards })}
           />
@@ -75,15 +70,20 @@ const styles = StyleSheet.create({
   },
   singleDeckTitle: {
     fontSize: 50,
-    color: orange
+    color: primaryColor
   },
   singleDeckCardNumber: {
     fontSize: 20,
-    color: orange
+    color: primaryColor
   },
   groupButton: {
     flex: 1,
     alignItems: "center"
+  },
+  button: {
+    marginTop: 20,
+    width: 150,
+    backgroundColor: primaryColor
   }
 });
 
