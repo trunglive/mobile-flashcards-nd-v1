@@ -29,7 +29,7 @@ const data = {
     title: "CSS",
     cards: [
       {
-        question: "What does CSS stand for",
+        question: "What does CSS stand for?",
         answer: "Cascading Stylesheet."
       },
       {

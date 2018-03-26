@@ -9,7 +9,7 @@ class SingleDeckView extends Component {
   render() {
     const { title, cards } = this.props.navigation.state.params;
     const { navigate } = this.props.navigation;
-
+    
     return (
       <View style={styles.container}>
         <View style={styles.singleDeckInfo}>
@@ -35,6 +35,11 @@ class SingleDeckView extends Component {
             }}
             title="Start Quiz"
             onPress={() => navigate("Quiz", { title, cards })}
+          />
+          <Button
+            buttonStyle={{ backgroundColor: orange, width: 150 }}
+            title="Deck List"
+            onPress={() => navigate("DeckList", { title, cards })}
           />
         </View>
       </View>

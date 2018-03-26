@@ -21,7 +21,6 @@ class QuizView extends Component {
   componentDidMount() {
     const { title } = this.props.navigation.state.params;
     const { decks } = this.props;
-
     this.setState({
       cards: decks[title].cards
     });
@@ -104,8 +103,9 @@ class QuizView extends Component {
         ) : (
           <QuizResultView
             correct={this.state.numberOfCorrectAnswer}
-            cards={cards.length}
+            numberOfCards={cards.length}
             navigate={navigate}
+            title={title}
           />
         )}
       </View>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { KeyboardAvoidingView, StyleSheet } from "react-native";
+import { KeyboardAvoidingView, Text, StyleSheet } from "react-native";
 import { Card, Button, FormLabel, FormInput } from "react-native-elements";
 import { addCardToDeck } from "../utils/api";
 import { addCard } from "../actions";
@@ -9,16 +9,21 @@ import { orange } from "../utils/colors";
 class NewCardView extends Component {
   state = {
     question: "",
-    answer: ""
+    answer: "",
+    warning: ""
   };
 
   handleEnter = () => {
     const { question, answer } = this.state;
-    const card = { ...this.state };
+    const card = { question, answer };
     const { title } = this.props.navigation.state.params;
     const { addCard, navigation } = this.props;
 
-    if (question.length > 0 && answer.length > 0) {
+    console.log(card);
+
+    if (!question.length || !answer.length) {
+      this.setState({ warning: "Please enter both question and answer." })
+    } else {
       addCard(title, card);
       addCardToDeck(title, card);
       navigation.goBack();
@@ -26,7 +31,7 @@ class NewCardView extends Component {
   };
 
   render() {
-    const { question, answer } = this.state;
+    const { question, answer, warning } = this.state;
 
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -42,6 +47,7 @@ class NewCardView extends Component {
           onChangeText={answer => this.setState({ answer })}
           value={answer}
         />
+        <Text style={styles.warning}>{warning}</Text>
         <Button
           buttonStyle={styles.submit}
           title="Submit"
@@ -59,6 +65,12 @@ const styles = StyleSheet.create({
   },
   label: {
     color: orange
+  },
+  warning: {
+    marginTop: 20,
+    textAlign: "center",
+    color: orange,
+    fontSize: 18
   },
   submit: {
     marginTop: 50,

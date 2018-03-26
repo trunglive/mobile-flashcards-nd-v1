@@ -1,22 +1,68 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
-import { orange } from '../utils/colors';
+import { orange } from "../utils/colors";
 
 class QuizResultView extends Component {
-  render() {
-    const { navigate } = this.props;
+  state = {
+    cards: 0
+  };
 
-    const result = Math.round(this.props.correct / this.props.cards * 100);
+  componentDidMount() {
+    const { decks, title } = this.props;
+    this.setState({
+      cards: decks[title].cards
+    });
+  }
+
+  render() {
+    const { navigate, title } = this.props;
+    const { cards } = this.state;
+    const { correct, numberOfCards } = this.props;
+    const result = Math.round(correct / numberOfCards * 100);
+
     return (
       <View>
-        <Text style={styles.container}>Your answer is {result}% correct!</Text>
-        <Button buttonStyle={styles.button}
-          title="Restart Quiz"
-        />
-        <Button buttonStyle={styles.button}
-          title="Back to Deck"
-        />
+        {numberOfCards === 0 ? (
+          <View>
+            <Text style={styles.container}>
+              No card were found! Please go back to deck and add cards.
+            </Text>
+            <Button
+              buttonStyle={styles.button}
+              onPress={() => {
+                navigate("SingleDeck", { title, cards });
+              }}
+              title="Back to Deck"
+            />
+          </View>
+        ) : (
+          <View>
+            <Text style={styles.container}>
+              Your estimated score is {result}%!
+            </Text>
+            <Button
+              buttonStyle={styles.button}
+              onPress={() => {
+                navigate("Quiz", { title });
+              }}
+              title="Restart Quiz"
+            />
+            <Button
+              buttonStyle={styles.button}
+              onPress={() => {
+                navigate("SingleDeck", { title, cards });
+              }}
+              title="Back to Deck"
+            />
+            <Button
+            buttonStyle={styles.button}
+            title="Back to Deck List"
+            onPress={() => navigate("DeckList", { title, cards })}
+          />
+          </View>
+        )}
       </View>
     );
   }
@@ -25,16 +71,20 @@ class QuizResultView extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 200,
-    textAlign: 'center',
+    textAlign: "center",
     color: orange,
     fontSize: 18
   },
   button: {
-    marginTop:20,
+    marginTop: 20,
     marginLeft: 50,
     marginRight: 50,
     backgroundColor: orange
   }
-})
+});
 
-export default QuizResultView;
+const mapStateToProps = decks => ({
+  decks
+});
+
+export default connect(mapStateToProps)(QuizResultView);
