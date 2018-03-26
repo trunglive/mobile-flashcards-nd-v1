@@ -18,7 +18,7 @@ class NewCardView extends Component {
     const card = { question, answer };
     const { title } = this.props.navigation.state.params;
     const { addCard, navigation } = this.props;
-
+    
     if (!question.length || !answer.length) {
       this.setState({ warning: "Please enter both question and answer." });
     } else {

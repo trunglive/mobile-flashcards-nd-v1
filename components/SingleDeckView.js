@@ -26,7 +26,6 @@ class SingleDeckView extends Component {
     const { navigate } = this.props.navigation;
     const { title } = this.props.navigation.state.params;
     const { cards } = this.state;
-
     return (
       <View style={styles.container}>
         <View style={styles.singleDeckInfo}>

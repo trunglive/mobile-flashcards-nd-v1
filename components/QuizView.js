@@ -61,7 +61,6 @@ class QuizView extends Component {
     const { navigate } = this.props.navigation;
     const { title } = this.props.navigation.state.params;
     const { cards, currentCardIndex, isFlip } = this.state;
-
     return (
       <View>
         {currentCardIndex < cards.length ? (

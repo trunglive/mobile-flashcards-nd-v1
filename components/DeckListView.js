@@ -23,7 +23,6 @@ class DeckListView extends Component {
   render() {
     const { decks } = this.props;
     const { navigate } = this.props.navigation;
-
     return (
       <ScrollView>
         {Object.keys(decks).map(deck => {
