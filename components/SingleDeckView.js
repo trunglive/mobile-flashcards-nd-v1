@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import NewCardView from "./NewCardView";
@@ -6,10 +7,26 @@ import QuizView from "./QuizView";
 import { orange } from "../utils/colors";
 
 class SingleDeckView extends Component {
+  state = {
+    cards: []
+  };
+
+  componentDidMount() {
+    const { title } = this.props.navigation.state.params;
+    const { decks } = this.props;
+
+    if (decks[title]) {
+      this.setState({
+        cards: decks[title].cards
+      });
+    }
+  }
+
   render() {
-    const { title, cards } = this.props.navigation.state.params;
     const { navigate } = this.props.navigation;
-    
+    const { title } = this.props.navigation.state.params;
+    const { cards } = this.state;
+
     return (
       <View style={styles.container}>
         <View style={styles.singleDeckInfo}>
@@ -66,8 +83,12 @@ const styles = StyleSheet.create({
   },
   groupButton: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: "center"
   }
 });
 
-export default SingleDeckView;
+const mapStateToProps = decks => ({
+  decks
+});
+
+export default connect(mapStateToProps)(SingleDeckView);

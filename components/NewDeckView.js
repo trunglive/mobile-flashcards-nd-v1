@@ -28,9 +28,10 @@ class NewDeckView extends Component {
         warning: "Please enter a name for the deck."
       });
     } else {
-      addDeck(title);
-      saveDeckTitle(title);
-      navigation.goBack();
+      saveDeckTitle(title).then(() => {
+        addDeck(title);
+      });
+      navigation.navigate('SingleDeck', { title });
     }
   };
 
@@ -82,3 +83,4 @@ const mapStateToProps = decks => ({
 });
 
 export default connect(mapStateToProps, { addDeck })(NewDeckView);
+// navigation.navigate("SingleDeck", { title, cards: decks[title].cards });

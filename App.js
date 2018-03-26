@@ -42,19 +42,34 @@ const Tabs = TabNavigator({
 
 const Main = StackNavigator({
   Home: {
-    screen: Tabs
+    screen: Tabs,
+    navigationOptions: {
+      header: null
+    }
   },
   SingleDeck: {
-    screen: SingleDeckView
+    screen: SingleDeckView,
+    navigationOptions: {
+      header: null
+    }
   },
   NewCard: {
-    screen: NewCardView
+    screen: NewCardView,
+    navigationOptions: {
+      header: null
+    }
   },
   Quiz: {
-    screen: QuizView
+    screen: QuizView,
+    navigationOptions: {
+      header: null
+    }
   },
   QuizResult: {
-    screen: QuizResultView
+    screen: QuizResultView,
+    navigationOptions: {
+      header: null
+    }
   }
 });
 

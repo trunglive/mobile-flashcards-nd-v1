@@ -19,14 +19,14 @@ class NewCardView extends Component {
     const { title } = this.props.navigation.state.params;
     const { addCard, navigation } = this.props;
 
-    console.log(card);
-
     if (!question.length || !answer.length) {
-      this.setState({ warning: "Please enter both question and answer." })
+      this.setState({ warning: "Please enter both question and answer." });
     } else {
-      addCard(title, card);
-      addCardToDeck(title, card);
-      navigation.goBack();
+      addCardToDeck(title, card).then(() => {
+        addCard(title, card);
+      }).then(() => {
+        navigation.navigate('SingleDeck', { title });
+      });
     }
   };
 
