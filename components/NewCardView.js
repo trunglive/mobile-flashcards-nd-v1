@@ -32,7 +32,6 @@ class NewCardView extends Component {
 
   render() {
     const { question, answer, warning } = this.state;
-
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <FormLabel labelStyle={styles.label}>Question</FormLabel>

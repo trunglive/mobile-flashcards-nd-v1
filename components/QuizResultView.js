@@ -21,7 +21,6 @@ class QuizResultView extends Component {
     const { cards } = this.state;
     const { correct, numberOfCards } = this.props;
     const result = Math.round(correct / numberOfCards * 100);
-
     return (
       <View>
         {numberOfCards === 0 ? (

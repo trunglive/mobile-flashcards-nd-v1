@@ -37,7 +37,6 @@ class NewDeckView extends Component {
 
   render() {
     const { title, warning } = this.state;
-
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <FormLabel labelStyle={styles.label}>Deck</FormLabel>
@@ -83,4 +82,3 @@ const mapStateToProps = decks => ({
 });
 
 export default connect(mapStateToProps, { addDeck })(NewDeckView);
-// navigation.navigate("SingleDeck", { title, cards: decks[title].cards });
