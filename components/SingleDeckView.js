@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import NewCardView from "./NewCardView";
 import QuizView from "./QuizView";
+import { orange } from "../utils/colors";
 
 class SingleDeckView extends Component {
   render() {
@@ -19,16 +20,23 @@ class SingleDeckView extends Component {
               : `${cards.length} question`}
           </Text>
         </View>
-        <Button
-          buttonStyle={{ backgroundColor: "#F38181", marginTop: 20 }}
-          title="Add Card"
-          onPress={() => navigate("NewCard", { title, cards })}
-        />
-        <Button
-          buttonStyle={{ backgroundColor: "#F38181", marginBottom: 20 }}
-          title="Start Quiz"
-          onPress={() => navigate("Quiz", { title, cards })}
-        />
+        <View style={styles.groupButton}>
+          <Button
+            buttonStyle={{ backgroundColor: orange, width: 150 }}
+            title="Add Card"
+            onPress={() => navigate("NewCard", { title, cards })}
+          />
+          <Button
+            buttonStyle={{
+              backgroundColor: orange,
+              marginTop: 20,
+              marginBottom: 60,
+              width: 150
+            }}
+            title="Start Quiz"
+            onPress={() => navigate("Quiz", { title, cards })}
+          />
+        </View>
       </View>
     );
   }
@@ -36,8 +44,7 @@ class SingleDeckView extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#F38181"
+    flex: 1
   },
   singleDeckInfo: {
     flex: 1,
@@ -46,11 +53,15 @@ const styles = StyleSheet.create({
   },
   singleDeckTitle: {
     fontSize: 50,
-    color: "#FBFBFB"
+    color: orange
   },
   singleDeckCardNumber: {
     fontSize: 20,
-    color: "#FBFBFB"
+    color: orange
+  },
+  groupButton: {
+    flex: 1,
+    alignItems: 'center'
   }
 });
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
+import { orange } from '../utils/colors';
 
 class QuizResultView extends Component {
   render() {
@@ -10,10 +11,10 @@ class QuizResultView extends Component {
     return (
       <View>
         <Text style={styles.container}>Your answer is {result}% correct!</Text>
-        <Button style={styles.button}
+        <Button buttonStyle={styles.button}
           title="Restart Quiz"
         />
-        <Button style={styles.button}
+        <Button buttonStyle={styles.button}
           title="Back to Deck"
         />
       </View>
@@ -24,12 +25,15 @@ class QuizResultView extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 200,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: orange,
+    fontSize: 18
   },
   button: {
     marginTop:20,
     marginLeft: 50,
-    marginRight: 50
+    marginRight: 50,
+    backgroundColor: orange
   }
 })
 

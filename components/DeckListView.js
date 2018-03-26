@@ -10,10 +10,9 @@ import {
 } from "react-native";
 import { StackNavigator } from "react-navigation";
 import SingleDeckView from "./SingleDeckView";
-import { getDecks } from "../utils/api";
 import { receiveDecks } from "../actions";
-
-// #756C83#F38181#B9E1DC#FBFBFB
+import { getDecks } from "../utils/api";
+import { orange, lightwhite } from '../utils/colors';
 
 class DeckListView extends Component {
   componentDidMount() {
@@ -36,8 +35,8 @@ class DeckListView extends Component {
               onPress={() => navigate("SingleDeck", { title, cards })}
             >
               <View style={styles.deck}>
-                <Text style={styles.deckText}>{title}</Text>
-                <Text style={styles.deckText}>
+                <Text style={styles.deckTitle}>{title}</Text>
+                <Text style={styles.cardNumber}>
                   {cards.length > 1
                     ? `${cards.length} questions`
                     : `${cards.length} question`}
@@ -64,11 +63,15 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     margin: 10,
-    backgroundColor: "#F38181"
+    backgroundColor: orange
   },
-  deckText: {
+  deckTitle: {
+    fontSize: 30,
+    color: lightwhite
+  },
+  cardNumber: {
     fontSize: 20,
-    color: "#FBFBFB"
+    color: lightwhite
   }
 });
 
