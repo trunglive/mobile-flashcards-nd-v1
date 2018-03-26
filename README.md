@@ -14,6 +14,10 @@ This project was initially bootstrapped with [Create React Native App](https://g
 * [Redux](https://github.com/reactjs/redux)
 * [React Native Elements](https://github.com/react-native-training/react-native-elements)
 
+## Demo
+
+
+
 ## Quick Start
 
 **Clone the project**:
